@@ -23,19 +23,39 @@
 
   3.  Ознакомьтесь с возможностями конфигурации VirtualBox через Vagrantfile: документация. Как добавить оперативной памяти или ресурсов процессора виртуальной машине?
 
-![changeconfigVM](https://github.com/MaximovAA/devops_netology_term/blob/main/changeconfigVM.jpg) "Изменяем конфиг файл VM по-умолчанию и запускаем VM")
+![changeconfigVM](https://github.com/MaximovAA/devops_netology_term/blob/main/changeconfigVM.jpg "Изменяем конфиг файл VM по-умолчанию и запускаем VM")
 
   4.  Команда vagrant ssh из директории, в которой содержится Vagrantfile, позволит вам оказаться внутри виртуальной машины без каких-либо дополнительных настроек. Попрактикуйтесь в выполнении обсуждаемых команд в терминале Ubuntu.
+
+![changeconfigVM](https://github.com/MaximovAA/devops_netology_term/blob/main/vagrantssh.jpg "Пробуем различные команды и смотрим результаты выполнения")
 
   5.  Ознакомьтесь с разделами man bash, почитайте о настройках самого bash:
         какой переменной можно задать длину журнала history, и на какой строчке manual это описывается?
         что делает директива ignoreboth в bash?
 
+![history_line](https://github.com/MaximovAA/devops_netology_term/blob/main/history_line.jpg "Читаем man")
+![History](https://github.com/MaximovAA/devops_netology_term/blob/main/History.jpg "Поиск по ключевым словам")
+
+HISTSIZE — количество команд, которые необходимо запоминать в списке истории (по умолчанию — 500);
+HISTFILESIZE — максимальное количество строк, содержащееся в файле истории ~/.bash_history (по умолчанию — 500);
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+
+ignorespace — не сохранять строки начинающиеся с символа <пробел>
+ignoredups — не сохранять строки, совпадающие с последней выполненной командой
+ignoreboth — использовать обе опции ‘ignorespace’ и ‘ignoredups’
+
+
   6.  В каких сценариях использования применимы скобки {} и на какой строчке man bash это описано?
+
+![Compounds command](https://github.com/MaximovAA/devops_netology_term/blob/main/Compound%20Commands.jpg "Читаем man")
 
   7.  С учётом ответа на предыдущий вопрос, как создать однократным вызовом touch 100000 файлов? Получится ли аналогичным образом создать 300000? Если нет, то почему?
 
   8.  В man bash поищите по /\[\[. Что делает конструкция [[ -d /tmp ]]
+
+![expression](https://github.com/MaximovAA/devops_netology_term/blob/main/expression.jpg "Поиск в man bash /")
+![Matched](https://github.com/MaximovAA/devops_netology_term/blob/main/Matched.jpg "Проверяем условие [[ -d /tmp ]] ")
 
   9.  Сделайте так, чтобы в выводе команды type -a bash первым стояла запись с нестандартным путем, например bash is ... Используйте знания о просмотре существующих и создании новых переменных окружения, обратите внимание на переменную окружения PATH
 

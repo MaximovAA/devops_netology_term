@@ -14,12 +14,12 @@
 
         vagrant suspend выключит виртуальную машину с сохранением ее состояния (т.е., при следующем vagrant up будут запущены все процессы внутри, которые работали на момент вызова suspend), vagrant halt выключит виртуальную машину штатным образом.
 
-![setup](https://github.com/MaximovAA/devops_netology_term/blob/main/VM%20vagrant.jpg "Процесс установки и запуска VM")
-![setup](https://github.com/MaximovAA/devops_netology_term/blob/main/install.jpg "Авторизация в VM")
+![setup] (https://github.com/MaximovAA/devops_netology_term/blob/main/VM%20vagrant.jpg "Процесс установки и запуска VM")
+![setup] (https://github.com/MaximovAA/devops_netology_term/blob/main/install.jpg "Авторизация в VM")
 
   2.  Ознакомьтесь с графическим интерфейсом VirtualBox, посмотрите как выглядит виртуальная машина, которую создал для вас Vagrant, какие аппаратные ресурсы ей выделены. Какие ресурсы выделены по-умолчанию?
 
-![interface](https://github.com/MaximovAA/devops_netology_term/blob/main/vagrant%20setup.jpg "Конфигурация VM по-умолчанию")
+![interface] (https://github.com/MaximovAA/devops_netology_term/blob/main/vagrant%20setup.jpg "Конфигурация VM по-умолчанию")
 
   3.  Ознакомьтесь с возможностями конфигурации VirtualBox через Vagrantfile: документация. Как добавить оперативной памяти или ресурсов процессора виртуальной машине?
 

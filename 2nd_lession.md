@@ -58,10 +58,28 @@ amaksimov@git:~$ cat testfile2
 6. Получится ли, находясь в графическом режиме, вывести данные из PTY в какой-либо из эмуляторов TTY? Сможете ли вы наблюдать выводимые данные?  
 
 ![tty-pts](https://github.com/MaximovAA/devops_netology_term/blob/main/tty-pts.jpg "Пример вывода команд")
+```
+Таким образом во все активные подключения придет сообщение Hello
+```
 
 7. Выполните команду `bash 5>&1`. К чему она приведёт? Что будет, если вы выполните `echo netology > /proc/$$/fd/5`? Почему так происходит?  
 ```
-
+В данном примере мы создаем перенаправление с 5 дискритпора на 1, а после того как мы делаем вывод 'netology' на 5ый дескриптор нашего pid($$) мы получаем данное сообщение в окне терминала.
+amaksimov@git:/$ lsof -p $$
+COMMAND   PID      USER   FD   TYPE DEVICE SIZE/OFF    NODE NAME
+bash    15661 amaksimov  cwd    DIR    8,3     4096       2 /
+bash    15661 amaksimov  rtd    DIR    8,3     4096       2 /
+bash    15661 amaksimov  txt    REG    8,3  1396520 2228319 /usr/bin/bash
+bash    15661 amaksimov  mem    REG    8,3 14903376 2233820 /usr/lib/locale/locale-archive
+bash    15661 amaksimov  mem    REG    8,3  2216304 2234615 /usr/lib/x86_64-linux-gnu/libc.so.6
+bash    15661 amaksimov  mem    REG    8,3   200136 2235744 /usr/lib/x86_64-linux-gnu/libtinfo.so.6.3
+bash    15661 amaksimov  mem    REG    8,3    27002 2887108 /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+bash    15661 amaksimov  mem    REG    8,3   240936 2234278 /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+bash    15661 amaksimov    0u   CHR  136,0      0t0       3 /dev/pts/0
+bash    15661 amaksimov    1u   CHR  136,0      0t0       3 /dev/pts/0
+bash    15661 amaksimov    2u   CHR  136,0      0t0       3 /dev/pts/0
+bash    15661 amaksimov    5u   CHR  136,0      0t0       3 /dev/pts/0
+bash    15661 amaksimov  255u   CHR  136,0      0t0       3 /dev/pts/0
 ```
 
 8. Получится ли в качестве входного потока для pipe использовать только stderr команды, не потеряв отображение stdout на pty?  
@@ -70,6 +88,7 @@ amaksimov@git:~$ cat testfile2
 ```
 
 ```
+![testfile](https://github.com/MaximovAA/devops_netology_term/blob/main/testfile.jpg "Пример вывода команд")
 
 9. Что выведет команда `cat /proc/$$/environ`? Как ещё можно получить аналогичный по содержанию вывод?  
 ```

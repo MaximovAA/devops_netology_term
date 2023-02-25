@@ -42,13 +42,22 @@ ls: cannot access '/var1': No such file or directory
 
 5. Получится ли одновременно передать команде файл на stdin и вывести её stdout в другой файл? Приведите работающий пример.  
 ```
-
+Операции перенаправления и/или конвейеры могут комбинироваться в одной командной строке.
+command < input-file > output-file
+amaksimov@git:~$ cat < testfile > testfile2
+amaksimov@git:~$ cat testfile2
+123
+123
+123
+321
+313
+123
+123
 ```
 
 6. Получится ли, находясь в графическом режиме, вывести данные из PTY в какой-либо из эмуляторов TTY? Сможете ли вы наблюдать выводимые данные?  
-```
 
-```
+![tty-pts](https://github.com/MaximovAA/devops_netology_term/blob/main/tty-pts.jpg "Пример вывода команд")
 
 7. Выполните команду `bash 5>&1`. К чему она приведёт? Что будет, если вы выполните `echo netology > /proc/$$/fd/5`? Почему так происходит?  
 ```

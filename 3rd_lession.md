@@ -51,6 +51,7 @@
 3. Предположим, приложение пишет лог в текстовый файл. Этот файл оказался удалён (deleted в lsof), но сказать сигналом приложению переоткрыть файлы или просто перезапустить приложение возможности нет. Так как приложение продолжает писать в удалённый файл, место на диске постепенно заканчивается. Основываясь на знаниях о перенаправлении потоков, предложите способ обнуления открытого удалённого файла, чтобы освободить место на файловой системе.  
 ```
 Можно восстановить файл и затереть его содержимое
+Пример
 sudo lsof | grep testfile
 cp /proc/2031/fd/2 testfile
 echo "" > testfile
@@ -84,8 +85,19 @@ openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libz.so.1", O_RDONLY|O_CLOEXEC) = 3
 
 6. Какой системный вызов использует `uname -a`? Приведите цитату из man по этому системному вызову, где описывается альтернативное местоположение в `/proc` и где можно узнать версию ядра и релиз ОС.
 ```
-openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
-write(1, "Linux git 5.19.0-32-generic #33~"..., 124Linux git 5.19.0-32-generic #33~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Mon Jan 30 17:03:34 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+/proc/version
+              This  string  identifies the kernel version that is currently running.  It includes the con‐
+              tents of /proc/sys/kernel/ostype, /proc/sys/kernel/osrelease, and  /proc/sys/kernel/version.
+              For example:
+
+                  Linux version 1.0.9 (quinlan@phaze) #1 Sat May 14 01:51:54 EDT 1994
+
+
+amaksimov@git:~$ cat /proc/version
+Linux version 5.19.0-32-generic (buildd@lcy02-amd64-026) (x86_64-linux-gnu-gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, GNU ld (GNU Binutils for Ubuntu) 2.38) #33~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Mon Jan 30 17:03:34 UTC 2
+amaksimov@git:~$ uname -a
+Linux git 5.19.0-32-generic #33~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Mon Jan 30 17:03:34 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+
 
 ```
 
@@ -100,17 +112,42 @@ write(1, "Linux git 5.19.0-32-generic #33~"..., 124Linux git 5.19.0-32-generic #
     
     Есть ли смысл использовать в bash `&&`, если применить `set -e`?  
     ```
+    Оператор точка с запятой позволяет запускать несколько команд за один раз, и выполнение команды происходит последовательно.
+    Оператор AND (&&) будет выполнять вторую команду только в том случае, если при выполнении первой команды SUCCEEDS, т.е. состояние выхода первой команды равно «0» —     программа выполнена успешно. Эта команда очень полезна при проверке состояния выполнения последней команды.
     
+    Команда set с ключом -e  Exit immediately if a command exits with a non-zero status. Таким образом проверка И в данном случае избыточна.
     ```
 
 8. Из каких опций состоит режим bash `set -euxo pipefail`, и почему его хорошо было бы использовать в сценариях?  
 ```
-
+set -euxo pipefail
+-e Exit immediately if a command exits with a non-zero status
+-u Treat unset variables as an error when substituting.
+-x Print commands and their arguments as they are executed.
+-o option-name
+pipefail включен, значит статус возврата конвейера — это значение последней (самой правой) команды для выхода с ненулевым статусом или ноль, если все команды завершились успешно. Она, если использовалась опция set -e, не приведёт к аварийному завершению скрипта.
 ```
 
 9. Используя `-o stat` для `ps`, определите, какой наиболее часто встречающийся статус у процессов в системе. В `man ps` изучите (`/PROCESS STATE CODES`), что значат дополнительные к основной заглавной букве статуса процессов. Его можно не учитывать при расчёте (считать S, Ss или Ssl равнозначными).
 ```
+amaksimov@git:~$ ps -o stat
+STAT
+Ss
+R+
+amaksimov@git:~$ ps -O stat
+    PID STAT S TTY          TIME COMMAND
+   9301 Ss   S pts/0    00:00:00 -bash
+  10199 R+   R pts/0    00:00:00 ps -O stat
 
+amaksimov@git:~$ ps -axo stat | wc -l
+189
+С минимальной погрешностью grep например на заголовок STAT - больше всего в системе спящих процессов
+amaksimov@git:~$ ps -axo stat | grep S | wc -l
+145
+
+S interruptible sleep (waiting for an event to complete)
+s is a session leader
+l is multi-threaded (using CLONE_THREAD, like NPTL pthreads do)
 ```
 
 ----

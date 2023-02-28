@@ -73,6 +73,9 @@ echo "" > testfile
     
     На какие файлы вы увидели вызовы группы `open` за первую секунду работы утилиты? Воспользуйтесь пакетом `bpfcc-tools` для Ubuntu 20.04. Дополнительные сведения по установке [по ссылке](https://github.com/iovisor/bcc/blob/master/INSTALL.md).
 ```
+Прив выполнении strace opensnoop-bpfcc видим обращения к библиотекам C.
+
+Полный вывод работы утилиты за 1 секунду:
 root@git:/home/amaksimov# opensnoop-bpfcc -d 1
 In file included from <built-in>:2:
 In file included from /virtual/include/bcc/bpf.h:12:

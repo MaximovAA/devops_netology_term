@@ -81,6 +81,107 @@ openat(AT_FDCWD, "/lib/x86_64-linux-gnu/liblzma.so.5", O_RDONLY|O_CLOEXEC) = 3
 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libbz2.so.1.0", O_RDONLY|O_CLOEXEC) = 3
 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libz.so.1", O_RDONLY|O_CLOEXEC) = 3
 
+root@git:/home/amaksimov# opensnoop-bpfcc -d 1
+In file included from <built-in>:2:
+In file included from /virtual/include/bcc/bpf.h:12:
+In file included from include/linux/types.h:6:
+In file included from include/uapi/linux/types.h:14:
+In file included from include/uapi/linux/posix_types.h:5:
+In file included from include/linux/stddef.h:5:
+In file included from include/uapi/linux/stddef.h:5:
+In file included from include/linux/compiler_types.h:90:
+include/linux/compiler-clang.h:41:9: warning: '__HAVE_BUILTIN_BSWAP32__' macro redefined [-Wmacro-redefined]
+#define __HAVE_BUILTIN_BSWAP32__
+        ^
+<command line>:4:9: note: previous definition is here
+#define __HAVE_BUILTIN_BSWAP32__ 1
+        ^
+In file included from <built-in>:2:
+In file included from /virtual/include/bcc/bpf.h:12:
+In file included from include/linux/types.h:6:
+In file included from include/uapi/linux/types.h:14:
+In file included from include/uapi/linux/posix_types.h:5:
+In file included from include/linux/stddef.h:5:
+In file included from include/uapi/linux/stddef.h:5:
+In file included from include/linux/compiler_types.h:90:
+include/linux/compiler-clang.h:42:9: warning: '__HAVE_BUILTIN_BSWAP64__' macro redefined [-Wmacro-redefined]
+#define __HAVE_BUILTIN_BSWAP64__
+        ^
+<command line>:5:9: note: previous definition is here
+#define __HAVE_BUILTIN_BSWAP64__ 1
+        ^
+In file included from <built-in>:2:
+In file included from /virtual/include/bcc/bpf.h:12:
+In file included from include/linux/types.h:6:
+In file included from include/uapi/linux/types.h:14:
+In file included from include/uapi/linux/posix_types.h:5:
+In file included from include/linux/stddef.h:5:
+In file included from include/uapi/linux/stddef.h:5:
+In file included from include/linux/compiler_types.h:90:
+include/linux/compiler-clang.h:43:9: warning: '__HAVE_BUILTIN_BSWAP16__' macro redefined [-Wmacro-redefined]
+#define __HAVE_BUILTIN_BSWAP16__
+        ^
+<command line>:3:9: note: previous definition is here
+#define __HAVE_BUILTIN_BSWAP16__ 1
+        ^
+3 warnings generated.
+In file included from <built-in>:2:
+In file included from /virtual/include/bcc/bpf.h:12:
+In file included from include/linux/types.h:6:
+In file included from include/uapi/linux/types.h:14:
+In file included from include/uapi/linux/posix_types.h:5:
+In file included from include/linux/stddef.h:5:
+In file included from include/uapi/linux/stddef.h:5:
+In file included from include/linux/compiler_types.h:90:
+include/linux/compiler-clang.h:41:9: warning: '__HAVE_BUILTIN_BSWAP32__' macro redefined [-Wmacro-redefined]
+#define __HAVE_BUILTIN_BSWAP32__
+        ^
+<command line>:4:9: note: previous definition is here
+#define __HAVE_BUILTIN_BSWAP32__ 1
+        ^
+In file included from <built-in>:2:
+In file included from /virtual/include/bcc/bpf.h:12:
+In file included from include/linux/types.h:6:
+In file included from include/uapi/linux/types.h:14:
+In file included from include/uapi/linux/posix_types.h:5:
+In file included from include/linux/stddef.h:5:
+In file included from include/uapi/linux/stddef.h:5:
+In file included from include/linux/compiler_types.h:90:
+include/linux/compiler-clang.h:42:9: warning: '__HAVE_BUILTIN_BSWAP64__' macro redefined [-Wmacro-redefined]
+#define __HAVE_BUILTIN_BSWAP64__
+        ^
+<command line>:5:9: note: previous definition is here
+#define __HAVE_BUILTIN_BSWAP64__ 1
+        ^
+In file included from <built-in>:2:
+In file included from /virtual/include/bcc/bpf.h:12:
+In file included from include/linux/types.h:6:
+In file included from include/uapi/linux/types.h:14:
+In file included from include/uapi/linux/posix_types.h:5:
+In file included from include/linux/stddef.h:5:
+In file included from include/uapi/linux/stddef.h:5:
+In file included from include/linux/compiler_types.h:90:
+include/linux/compiler-clang.h:43:9: warning: '__HAVE_BUILTIN_BSWAP16__' macro redefined [-Wmacro-redefined]
+#define __HAVE_BUILTIN_BSWAP16__
+        ^
+<command line>:3:9: note: previous definition is here
+#define __HAVE_BUILTIN_BSWAP16__ 1
+        ^
+3 warnings generated.
+PID    COMM               FD ERR PATH
+494    systemd-oomd        7   0 /proc/meminfo
+494    systemd-oomd        7   0 /sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/memory.pressure
+494    systemd-oomd        7   0 /sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/memory.current
+494    systemd-oomd        7   0 /sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/memory.min
+494    systemd-oomd        7   0 /sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/memory.low
+494    systemd-oomd        7   0 /sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/memory.swap.current
+494    systemd-oomd        7   0 /sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/memory.stat
+494    systemd-oomd        7   0 /proc/meminfo
+494    systemd-oomd        7   0 /proc/meminfo
+494    systemd-oomd        7   0 /proc/meminfo
+494    systemd-oomd        7   0 /proc/meminfo
+root@git:/home/amaksimov#
+
 ```
 
 6. Какой системный вызов использует `uname -a`? Приведите цитату из man по этому системному вызову, где описывается альтернативное местоположение в `/proc` и где можно узнать версию ядра и релиз ОС.

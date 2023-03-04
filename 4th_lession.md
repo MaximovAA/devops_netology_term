@@ -9,7 +9,7 @@
     * удостоверьтесь, что с помощью systemctl процесс корректно стартует, завершается, а после перезагрузки автоматически поднимается.
 
 ```
-
+Конфиг службы с предусмотренным внешним файлом:
 [Unit]
 Description=NodeExporter
 
@@ -23,7 +23,7 @@ ExecStart=/usr/local/bin/node_exporter \
 [Install]
 WantedBy=multi-user.target
 
-
+Автозапуск:
 systemctl enable node_exporter
 
 ```
@@ -31,7 +31,11 @@ systemctl enable node_exporter
 
 2. Изучите опции node_exporter и вывод `/metrics` по умолчанию. Приведите несколько опций, которые вы бы выбрали для базового мониторинга хоста по CPU, памяти, диску и сети.
 ```
-
+В минимальной реализации я бы выбрал:
+{collector="cpufreq"}
+{collector="meminfo"}
+{collector="diskstats"}
+{collector="netstat"}
 ```
 3. Установите в свою виртуальную машину [Netdata](https://github.com/netdata/netdata). Воспользуйтесь [готовыми пакетами](https://packagecloud.io/netdata/netdata/install) для установки (`sudo apt install -y netdata`). 
    
@@ -45,9 +49,12 @@ systemctl enable node_exporter
     ```
 
     После успешной перезагрузки в браузере на своём ПК (не в виртуальной машине) вы должны суметь зайти на `localhost:19999`. Ознакомьтесь с метриками, которые по умолчанию собираются Netdata, и с комментариями, которые даны к этим метрикам.
+![nodeexp](https://github.com/MaximovAA/devops_netology_term/blob/main/nodeexp.jpg "Пример вывода команд")
 ```
 
 ```
+![Netdata](https://github.com/MaximovAA/devops_netology_term/blob/main/Netdata.jpg "Пример вывода команд")
+
 4. Можно ли по выводу `dmesg` понять, осознаёт ли ОС, что загружена не на настоящем оборудовании, а на системе виртуализации?
 ```
 

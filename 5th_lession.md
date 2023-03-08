@@ -157,17 +157,20 @@ vagrant@sysadm-fs:~$ echo $?
 
 16. Используя pvmove, переместите содержимое PV с RAID0 на RAID1.
 ```
-
+vagrant@sysadm-fs:~$ sudo pvmove /dev/md0 /dev/md1
+  /dev/md0: Moved: 20.00%
+  /dev/md0: Moved: 100.00%
 ```
 
 17. Сделайте `--fail` на устройство в вашем RAID1 md.
 ```
-
+sudo mdadm /dev/md1 --fail /dev/sdc1
 ```
 
 18. Подтвердите выводом `dmesg`, что RAID1 работает в деградированном состоянии.
 ```
-
+[ 6781.611304] md/raid1:md1: Disk failure on sdc1, disabling device.
+               md/raid1:md1: Operation continuing on 1 devices.
 ```
 
 19. Протестируйте целостность файла — он должен быть доступен несмотря на «сбойный» диск:
@@ -178,12 +181,14 @@ vagrant@sysadm-fs:~$ echo $?
     0
     ```
 ```
-
+vagrant@sysadm-fs:~$ gzip -t /tmp/new/test.gz
+vagrant@sysadm-fs:~$ echo $?
+0
 ```
 
 20. Погасите тестовый хост — `vagrant destroy`.
 ```
-
+vagrant destroy
 ```
 
 ----

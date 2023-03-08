@@ -58,11 +58,13 @@ vagrant up
 sudo fdisk /dev/sdb
 Выставляем параметры в мастере, по аналогии разбиваем оставшееся место
 ```
+![fdisk](https://github.com/MaximovAA/devops_netology_term/blob/main/fdisk.jpg "Пример вывода команд")
 
 5. Используя `sfdisk`, перенесите эту таблицу разделов на второй диск.
 ```
 sfdisk -d /dev/sdb | sfdisk /dev/sdc
 ```
+![sfdisk](https://github.com/MaximovAA/devops_netology_term/blob/main/sfdisk.jpg "Пример вывода команд")
 
 6. Соберите `mdadm` RAID1 на паре разделов 2 Гб.
 ```

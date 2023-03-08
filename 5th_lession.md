@@ -58,7 +58,6 @@ vagrant up
 sudo fdisk /dev/sdb
 Выставляем параметры в мастере, по аналогии разбиваем оставшееся место
 ```
-![fdisk](https://github.com/MaximovAA/devops_netology_term/blob/main/fdisk.jpg "Пример вывода команд")
 
 5. Используя `sfdisk`, перенесите эту таблицу разделов на второй диск.
 ```

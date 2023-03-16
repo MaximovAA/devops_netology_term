@@ -59,9 +59,11 @@ X-DNS-Prefetch-Control: off
 OK
 
 ```
-
+![stackoverflow](https://github.com/MaximovAA/devops_netology_term/blob/main/stackoverflow.jpg "Пример вывода команд")
 
 **Шаг 3.** Какой IP-адрес у вас в интернете?
+
+![whois](https://github.com/MaximovAA/devops_netology_term/blob/main/whois.jpg "Пример вывода команд")
 
 ```
 

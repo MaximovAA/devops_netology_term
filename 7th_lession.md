@@ -2,7 +2,27 @@
 
 1. Проверьте список доступных сетевых интерфейсов на вашем компьютере. Какие команды есть для этого в Linux и в Windows?
 ```
+Привер вывода
+Linix:
+amaksimov@git:~$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+   
+Windows:
+Адаптер Ethernet Ethernet:
 
+   Описание. . . . . . . . . . . . . : Realtek Gaming 2.5GbE Family Controller
+   
+Адаптер Ethernet Ethernet 2:
+
+   Описание. . . . . . . . . . . . . : VirtualBox Host-Only Ethernet Adapter
+   
+
+Адаптер Ethernet Ethernet 3:
+
+  Описание. . . . . . . . . . . . . : VirtualBox Host-Only Ethernet Adapter #2
+   
 ```
 
 2. Какой протокол используется для распознавания соседа по сетевому интерфейсу? Какой пакет и команды есть в Linux для этого?

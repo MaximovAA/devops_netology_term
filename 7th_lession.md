@@ -133,4 +133,3 @@ netsh interface IP delete arpcache
 sudo ip neigh flush all 
 ```
 
-*В качестве решения отправьте ответы на вопросы и опишите, как они были получены.*

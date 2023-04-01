@@ -99,7 +99,7 @@ Recv-Q    Send-Q              Local Address:Port         Peer Address:Port      
 ![diag](https://github.com/MaximovAA/devops_netology_term/blob/main/diag.jpg "Пример диаграммы с условной маршрутизацией")
 
 ```
-В качестве примера *.*.*.* можно использовать например пул адресов 192.168.0.0/24
+В качестве примера *.*.*.* можно использовать например адреса из пула 192.168.0.0/24
 ```
 
  ---

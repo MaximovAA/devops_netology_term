@@ -4,19 +4,21 @@
 ```
 
 ```
-![bitward](https://github.com/MaximovAA/devops_netology_term/blob/main/bitward.jpg "Пример диаграммы с условной маршрутизацией")  
+![bitward](https://github.com/MaximovAA/devops_netology_term/blob/main/bitward.jpg "Пример")  
 
 
 2. Установите Google Authenticator на мобильный телефон. Настройте вход в Bitwarden-акаунт через Google Authenticator OTP.
 ```
 
 ```
-![2fa](https://github.com/MaximovAA/devops_netology_term/blob/main/2fa.jpg "Пример диаграммы с условной маршрутизацией")
+![2fa](https://github.com/MaximovAA/devops_netology_term/blob/main/2fa.jpg "Пример")
 3. Установите apache2, сгенерируйте самоподписанный сертификат, настройте тестовый сайт для работы по HTTPS.
 ```
-
+root@deburunta:/home/amaksimov# /usr/sbin/apache2ctl configtest
+Syntax OK
 ```
-
+![apache](https://github.com/MaximovAA/devops_netology_term/blob/main/apache.jpg "Пример")
+![cert](https://github.com/MaximovAA/devops_netology_term/blob/main/cert.jpg "Пример")
 4. Проверьте на TLS-уязвимости произвольный сайт в интернете (кроме сайтов МВД, ФСБ, МинОбр, НацБанк, РосКосмос, РосАтом, РосНАНО и любых госкомпаний, объектов КИИ, ВПК и т. п.).
 ```
 

@@ -4,7 +4,8 @@
 ```
 
 ```
-![bitward](https://github.com/MaximovAA/devops_netology_term/blob/main/bitward.jpg "Пример диаграммы с условной маршрутизацией")
+![bitward](https://github.com/MaximovAA/devops_netology_term/blob/main/bitward.jpg "Пример диаграммы с условной маршрутизацией")  
+
 
 2. Установите Google Authenticator на мобильный телефон. Настройте вход в Bitwarden-акаунт через Google Authenticator OTP.
 ```

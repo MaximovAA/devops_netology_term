@@ -22,7 +22,9 @@ Syntax OK
 
 4. Проверьте на TLS-уязвимости произвольный сайт в интернете (кроме сайтов МВД, ФСБ, МинОбр, НацБанк, РосКосмос, РосАтом, РосНАНО и любых госкомпаний, объектов КИИ, ВПК и т. п.).
 ```
-
+git clone --depth 1 https://github.com/drwetter/testssl.sh.git
+cd testssl.sh
+./testssl.sh -U --sneaky https://test-test.su/ проверяем сайт возданный в пункте 3
 ```
 ![vulners](https://github.com/MaximovAA/devops_netology_term/blob/main/vulners.jpg "Пример")  
 

@@ -2,14 +2,14 @@
 
 1. Установите плагин Bitwarden для браузера. Зарегестрируйтесь и сохраните несколько паролей.
 ```
-
+Ставим на Firefox
 ```
 ![bitward](https://github.com/MaximovAA/devops_netology_term/blob/main/bitward.jpg "Пример")  
 
 
 2. Установите Google Authenticator на мобильный телефон. Настройте вход в Bitwarden-акаунт через Google Authenticator OTP.
 ```
-
+Добавил в уже установленный Google Authenticator
 ```
 ![2fa](https://github.com/MaximovAA/devops_netology_term/blob/main/2fa.jpg "Пример")
 3. Установите apache2, сгенерируйте самоподписанный сертификат, настройте тестовый сайт для работы по HTTPS.
@@ -18,11 +18,13 @@ root@deburunta:/home/amaksimov# /usr/sbin/apache2ctl configtest
 Syntax OK
 ```
 ![apache](https://github.com/MaximovAA/devops_netology_term/blob/main/apache.jpg "Пример")
-![cert](https://github.com/MaximovAA/devops_netology_term/blob/main/cert.jpg "Пример")
+![cert](https://github.com/MaximovAA/devops_netology_term/blob/main/cert.jpg "Пример")  
+
 4. Проверьте на TLS-уязвимости произвольный сайт в интернете (кроме сайтов МВД, ФСБ, МинОбр, НацБанк, РосКосмос, РосАтом, РосНАНО и любых госкомпаний, объектов КИИ, ВПК и т. п.).
 ```
 
 ```
+![vulners](https://github.com/MaximovAA/devops_netology_term/blob/main/vulners.jpg "Пример")  
 
 5. Установите на Ubuntu SSH-сервер, сгенерируйте новый приватный ключ. Скопируйте свой публичный ключ на другой сервер. Подключитесь к серверу по SSH-ключу.
 ```

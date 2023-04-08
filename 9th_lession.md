@@ -40,10 +40,21 @@ amaksimov@git:~$
  
 6. Переименуйте файлы ключей из задания 5. Настройте файл конфигурации SSH-клиента так, чтобы вход на удалённый сервер осуществлялся по имени сервера.
 ```
+Переименовываем ключи через mv, создаем файл конфига в котором указываем параметры подключения (пример ниже). Подключаемся без каких-либо ошибок.
 
+touch ~/.ssh/config && chmod 600 ~/.ssh/config
+vim config
+
+Host my_server
+HostName 192.168.1.100
+IdentityFile ~/.ssh/some_server.key
+User my_user
 ```
 
 7. Соберите дамп трафика утилитой tcpdump в формате pcap, 100 пакетов. Откройте файл pcap в Wireshark.
 ```
-
+Ставим утилиту apt install tcpdump
+Собираем дамп файл tcpdump -c 100 -w 0001.pcap
+Далее я выдернул 0001.pcap средствами winscp и открыл в виндовой версии wireshark
 ```
+![pcap](https://github.com/MaximovAA/devops_netology_term/blob/main/pcap.jpg "Пример некоторых выводов")

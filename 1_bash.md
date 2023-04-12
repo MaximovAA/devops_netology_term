@@ -87,7 +87,42 @@ curl: (7) Failed to connect to localhost port 4757: Connection refused
 ### Ваш скрипт:
 
 ```bash
-???
+#!/bin/bash
+counter=0
+while ((1==1))
+do
+        echo $counter
+        curl -Is http://192.168.0.1:80
+        if (($? != 0))
+        then
+        echo "192.168.0.1 не доступен" >> error.log
+        else
+        echo "192.168.0.1 доступен" >> curl.log
+                date >> curl.log
+        fi
+        curl -Is http://173.194.222.113:80
+        if (($? != 0))
+        then
+        echo "173.194.222.113 не доступен" >> error.log
+        else
+        echo "173.194.222.113 доступен" >> curl.log
+                date >> curl.log
+        fi
+        curl -Is http://87.250.250.242:80
+        if (($? != 0))
+        then
+        echo "87.250.250.242 не доступен" >> error.log
+        else
+        echo "87.250.250.242 доступен" >> curl.log
+                date >> curl.log
+        fi
+        if ((counter>=4))
+        then
+        break
+        fi
+        counter=$(($counter+1))
+done
+
 ```
 
 ```

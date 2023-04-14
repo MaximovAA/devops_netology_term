@@ -133,13 +133,13 @@ do
 
         echo $counter
         curl $i
-        if (($? != 0))
+        if (($? == 0))
         then
-                echo "$i не доступен" >> error.log
-                break
-        else
                 echo "$i доступен" >> curl.log
                 date >> curl.log
+        else
+                echo "$i не доступен" >> error.log
+                break
         fi
         counter=$(($counter+1))
 done

@@ -153,7 +153,7 @@ done
 
 ```
 ```
-![log3](https://github.com/MaximovAA/devops_netology_term/blob/main/log3.jpg "Пример")
+![log](https://github.com/MaximovAA/devops_netology_term/blob/main/log3.jpg "Пример")
 
 Так как в моем случае недоступен первый из проверяемых IP скрипт отрабатывает сразу break по его условию.
 Если поменять на доступный ip выполняется по кругу с подсчетом итераций.

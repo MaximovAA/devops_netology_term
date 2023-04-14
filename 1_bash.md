@@ -105,7 +105,7 @@ done
 
 
 ```
-![vulners](https://github.com/MaximovAA/devops_netology_term/blob/main/log2.jpg "Пример")
+![log2](https://github.com/MaximovAA/devops_netology_term/blob/main/log2.jpg "Пример")
 
 
 ---
@@ -115,54 +115,47 @@ done
 
 ### Ваш скрипт:
 
+```
+В данной случае немного меняем порядок выполнения скрипта, нам потребуется предусмотреть выход из обоих циклов. До запуска циклов отчищаем error.log  
+После первой проверки ресурса и в случае недоступности появится запись в error.log и проверив что файл стал ненулевым весь скрипт закончит работу указав последний  
+проверенный хост как недоступный.
+```
+
 ```bash
 #!/bin/bash
+array=("http://192.168.0.1:80" "http://173.194.222.113:80" "http://87.250.250.242:80")
 counter=0
+echo > error.log
 while ((1==1))
 do
+        for i in ${array[@]}
+do
+
         echo $counter
-        curl -Is http://192.168.0.1:80
+        curl $i
         if (($? != 0))
         then
-        echo "192.168.0.1 не доступен" >> error.log
-        break
+                echo "$i не доступен" >> error.log
+                break
         else
-        echo "192.168.0.1 доступен" >> curl.log
-                date >> curl.log
-        fi
-        echo $counter
-        curl -Is http://173.194.222.113:80
-        if (($? != 0))
-        then
-        echo "173.194.222.113 не доступен" >> error.log
-        break
-        else
-        echo "173.194.222.113 доступен" >> curl.log
-                date >> curl.log
-        fi
-        echo $counter
-        curl -Is http://87.250.250.242:80
-        if (($? != 0))
-        then
-        echo "87.250.250.242 не доступен" >> error.log
-        break
-        else
-        echo "87.250.250.242 доступен" >> curl.log
+                echo "$i доступен" >> curl.log
                 date >> curl.log
         fi
         counter=$(($counter+1))
 done
+if [ -s error.log ]
+        then
+        echo "$i недоступен"
+        break
+fi
+done
+
 
 ```
 ```
+![log3](https://github.com/MaximovAA/devops_netology_term/blob/main/log3.jpg "Пример")
+
 Так как в моем случае недоступен первый из проверяемых IP скрипт отрабатывает сразу break по его условию.
-amaksimov@deburunta:~$ cat error.log
-
-192.168.0.1 не доступен
-amaksimov@deburunta:~$ cat curl.log
-
-amaksimov@deburunta:~$
-
 Если поменять на доступный ip выполняется по кругу с подсчетом итераций.
 ```
 

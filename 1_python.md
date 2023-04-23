@@ -15,9 +15,9 @@ c = a + b
 
 | Вопрос  | Ответ |
 | ------------- | ------------- |
-| Какое значение будет присвоено переменной `c`?  | ???  |
-| Как получить для переменной `c` значение 12?  | ???  |
-| Как получить для переменной `c` значение 3?  | ???  |
+| Какое значение будет присвоено переменной `c`?  | TypeError: unsupported operand type(s) for +: 'int' and 'str'  |
+| Как получить для переменной `c` значение 12?  | c = str(a) + b  |
+| Как получить для переменной `c` значение 3?  | c = a + int(b)  |
 
 ------
 
@@ -45,13 +45,51 @@ for result in result_os.split('\n'):
 ### Ваш скрипт:
 
 ```python
-???
+#!/usr/bin/env python3
+
+import os
+import sys
+path = sys.argv[1]
+print (path)
+bash_command = [("cd " + path), "git status"]
+result_os = os.popen(' && '.join(bash_command)).read()
+print ('GIT STATUS:', result_os)
+is_change = False
+#print (is_change)
+for result in result_os.split('\n'):
+    if result.find('modified') != -1:
+        prepare_result = result.replace('\tmodified:   ', '')
+        print ('Modified in ', path, ': ', prepare_result)
+    elif result.find('new file') != -1:
+         prepare_result = result.replace('\tnew file:   ', '')
+         print('New files in', path, ': ', prepare_result)
+
 ```
 
 ### Вывод скрипта при запуске во время тестирования:
 
 ```
-???
+amaksimov@deburunta:~/git-net$ ./1.py /home/amaksimov/git-net/
+/home/amaksimov/git-net/
+GIT STATUS: On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   1.py
+        new file:   123.md
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   1.py
+        modified:   readme.md
+
+
+New files in /home/amaksimov/git-net/ :  1.py
+New files in /home/amaksimov/git-net/ :  123.md
+Modified in  /home/amaksimov/git-net/ :  1.py
+Modified in  /home/amaksimov/git-net/ :  readme.md
+amaksimov@deburunta:~/git-net$
+
 ```
 
 ------

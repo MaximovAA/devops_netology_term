@@ -68,6 +68,10 @@ for result in result_os.split('\n'):
 ### Вывод скрипта при запуске во время тестирования:
 
 ```
+В рамках скрипта добавил некоторые дополнительные выводы, для наглядности.
+```
+
+```
 amaksimov@deburunta:~/git-net$ ./1.py
 GIT STATUS: On branch master
 Changes to be committed:
@@ -120,6 +124,10 @@ for result in result_os.split('\n'):
 ```
 
 ### Вывод скрипта при запуске во время тестирования:
+
+```
+В рамках скрипта добавил некоторые дополнительные выводы, для наглядности.
+```
 
 ```
 amaksimov@deburunta:~/git-net$ ./1.py /home/amaksimov/git-net/

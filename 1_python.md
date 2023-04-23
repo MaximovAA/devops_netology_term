@@ -172,7 +172,21 @@ amaksimov@deburunta:~/git-net$
 ### Ваш скрипт:
 
 ```python
-???
+#!/usr/bin/env python3
+import os
+import socket
+
+hosts = ["drive.google.com", "mail.google.com", "google.com"]
+bash_command = ["echo >> ~/list.txt" ]
+for i in hosts:
+    ip = socket.gethostbyname(i)
+    name = i
+    print(i,' ' + ip)
+#    print ('ip', ip)
+#    print ('name', name)
+    iplist = os.popen(' && '.join(bash_command)).read()
+    print (iplist)
+
 ```
 
 ### Вывод скрипта при запуске во время тестирования:

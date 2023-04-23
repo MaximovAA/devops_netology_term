@@ -48,6 +48,59 @@ for result in result_os.split('\n'):
 #!/usr/bin/env python3
 
 import os
+
+bash_command = [("cd ~/git-net"), "git status"]
+result_os = os.popen(' && '.join(bash_command)).read()
+print ('GIT STATUS:', result_os)
+is_change = False
+#print (is_change)
+for result in result_os.split('\n'):
+    if result.find('modified') != -1:
+        prepare_result = result.replace('\tmodified:   ', '')
+        print ('Modified: ', prepare_result)
+    elif result.find('new file') != -1:
+         prepare_result = result.replace('\tnew file:   ', '')
+         print('New files: ', prepare_result)
+
+
+```
+
+### Вывод скрипта при запуске во время тестирования:
+
+```
+amaksimov@deburunta:~/git-net$ ./1.py
+GIT STATUS: On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   1.py
+        new file:   123.md
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   1.py
+        modified:   readme.md
+
+
+New files:  1.py
+New files:  123.md
+Modified:  1.py
+Modified:  readme.md
+amaksimov@deburunta:~/git-net$
+```
+
+------
+
+## Задание 3
+
+Доработать скрипт выше так, чтобы он не только мог проверять локальный репозиторий в текущей директории, но и умел воспринимать путь к репозиторию, который мы передаём, как входной параметр. Мы точно знаем, что начальство будет проверять работу этого скрипта в директориях, которые не являются локальными репозиториями.
+
+### Ваш скрипт:
+
+```python
+#!/usr/bin/env python3
+
+import os
 import sys
 path = sys.argv[1]
 print (path)
@@ -90,24 +143,6 @@ Modified in  /home/amaksimov/git-net/ :  1.py
 Modified in  /home/amaksimov/git-net/ :  readme.md
 amaksimov@deburunta:~/git-net$
 
-```
-
-------
-
-## Задание 3
-
-Доработать скрипт выше так, чтобы он не только мог проверять локальный репозиторий в текущей директории, но и умел воспринимать путь к репозиторию, который мы передаём, как входной параметр. Мы точно знаем, что начальство будет проверять работу этого скрипта в директориях, которые не являются локальными репозиториями.
-
-### Ваш скрипт:
-
-```python
-???
-```
-
-### Вывод скрипта при запуске во время тестирования:
-
-```
-???
 ```
 
 ------

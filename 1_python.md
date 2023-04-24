@@ -173,26 +173,31 @@ amaksimov@deburunta:~/git-net$
 
 ```python
 #!/usr/bin/env python3
-import os
 import socket
+import time
 
+name = '0'
+iplist = [None, None, None]
 hosts = ["drive.google.com", "mail.google.com", "google.com"]
-bash_command = ["echo >> ~/list.txt" ]
-for i in hosts:
-    ip = socket.gethostbyname(i)
-    name = i
-    print(i,' ' + ip)
-#    print ('ip', ip)
-#    print ('name', name)
-    iplist = os.popen(' && '.join(bash_command)).read()
-    print (iplist)
+
+while 1 == 1:
+    for i in range (0, len(hosts)):
+        time.sleep(1)
+        ip = socket.gethostbyname(hosts[i])
+        name = hosts[i]
+        if iplist[i] is None:
+            iplist[i] = ip
+            print (name, ip)
+        elif iplist[i] != ip:
+            print ('Новый адрес ',name,' - ',ip,' Старый адрес -',iplist[i])
+            iplist[i] = ip
 
 ```
 
 ### Вывод скрипта при запуске во время тестирования:
 
 ```
-???
+В моем примере адресация drive.google.com не менялась, а mail.google.com и google.com отвечали с разных адресов. Скрипт записывает в массив последний адрес ответа и указывает его вместе с новым ip адресом.
 ```
-
+![dns](https://github.com/MaximovAA/devops_netology_term/blob/main/dns.jpg "Пример")
 ------

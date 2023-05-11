@@ -23,7 +23,20 @@
 ### Ваш скрипт:
 
 ```
-???
+{ "info" : "Sample JSON output from our service\t",
+        "elements" :[
+            {"name" : "first",
+            "type" : "server",
+            "ip" : 7175
+            },
+            {"name" : "second",
+            "type" : "proxy",
+            "ip" : "71.78.22.43"
+            }
+        ]
+}
+
+
 ```
 
 ---
@@ -41,25 +54,77 @@
 ### Ваш скрипт:
 
 ```python
-???
+#!/usr/bin/env python3
+
+import socket, time
+import json, yaml
+
+hostlist = {"drive.google.com":None, "mail.google.com":None, "google.com":None}
+
+while 1==1:
+    for i in hostlist:
+        dns = i
+        answer = socket.gethostbyname(i)
+        time.sleep(1)
+        print (hostlist)
+        if answer != hostlist[i]:
+            print (dns, 'ERROR',answer,'IP mismath',hostlist[i])
+            hostlist[i] = answer
+        with open('1.yml', 'w') as ym:
+            ym.write(yaml.dump(hostlist, explicit_start=True, explicit_end=True))
+        with open('1.json', 'w') as js:
+            js.write(json.dumps(hostlist))
+
 ```
 
 ### Вывод скрипта при запуске во время тестирования:
 
 ```
-???
+amaksimov@deburunta:~$ ./4.py
+{'drive.google.com': None, 'mail.google.com': None, 'google.com': None}
+drive.google.com ERROR 108.177.14.194 IP mismath None
+{'drive.google.com': '108.177.14.194', 'mail.google.com': None, 'google.com': None}
+mail.google.com ERROR 173.194.222.18 IP mismath None
+{'drive.google.com': '108.177.14.194', 'mail.google.com': '173.194.222.18', 'google.com': None}
+google.com ERROR 173.194.73.138 IP mismath None
+{'drive.google.com': '108.177.14.194', 'mail.google.com': '173.194.222.18', 'google.com': '173.194.73.138'}
+{'drive.google.com': '108.177.14.194', 'mail.google.com': '173.194.222.18', 'google.com': '173.194.73.138'}
+mail.google.com ERROR 173.194.222.19 IP mismath 173.194.222.18
+{'drive.google.com': '108.177.14.194', 'mail.google.com': '173.194.222.19', 'google.com': '173.194.73.138'}
+google.com ERROR 173.194.73.100 IP mismath 173.194.73.138
+{'drive.google.com': '108.177.14.194', 'mail.google.com': '173.194.222.19', 'google.com': '173.194.73.100'}
+{'drive.google.com': '108.177.14.194', 'mail.google.com': '173.194.222.19', 'google.com': '173.194.73.100'}
+mail.google.com ERROR 173.194.222.17 IP mismath 173.194.222.19
+{'drive.google.com': '108.177.14.194', 'mail.google.com': '173.194.222.17', 'google.com': '173.194.73.100'}
+google.com ERROR 173.194.73.113 IP mismath 173.194.73.100
+{'drive.google.com': '108.177.14.194', 'mail.google.com': '173.194.222.17', 'google.com': '173.194.73.113'}
+{'drive.google.com': '108.177.14.194', 'mail.google.com': '173.194.222.17', 'google.com': '173.194.73.113'}
+mail.google.com ERROR 173.194.222.83 IP mismath 173.194.222.17
+{'drive.google.com': '108.177.14.194', 'mail.google.com': '173.194.222.83', 'google.com': '173.194.73.113'}
+google.com ERROR 173.194.73.102 IP mismath 173.194.73.113
+{'drive.google.com': '108.177.14.194', 'mail.google.com': '173.194.222.83', 'google.com': '173.194.73.102'}
+^CTraceback (most recent call last):
+  File "/home/amaksimov/./4.py", line 14, in <module>
+    time.sleep(1)
+KeyboardInterrupt
+
 ```
 
 ### JSON-файл(ы), который(е) записал ваш скрипт:
 
 ```json
-???
+{"drive.google.com": "108.177.14.194", "mail.google.com": "173.194.222.83", "google.com": "173.194.73.102"}
 ```
 
 ### YAML-файл(ы), который(е) записал ваш скрипт:
 
 ```yaml
-???
+---
+drive.google.com: 108.177.14.194
+google.com: 173.194.73.102
+mail.google.com: 173.194.222.83
+...
+
 ```
 
 ---
